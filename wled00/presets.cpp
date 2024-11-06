@@ -71,7 +71,9 @@ static void doSaveState() {
       tmpRAMbuffer = (char*) ps_malloc(len);
     else
     #endif
-      tmpRAMbuffer = (char*) malloc(len);
+      
+      // tmpRAMbuffer = (char*) malloc(len);
+      tmpRAMbuffer = (char*) heap_caps_calloc_prefer(len,1,2,MALLOC_CAP_SPIRAM,MALLOC_CAP_INTERNAL);
     if (tmpRAMbuffer!=nullptr) {
       serializeJson(*fileDoc, tmpRAMbuffer, len);
     } else {
