@@ -21,6 +21,16 @@ jobs:
         python-version: '3.9'
     - name: Install PlatformIO
       run: pip install -r requirements.txt
+#-----------------------------------------------------------------------------------------
+    - name: Set the date as variable
+      id: DateToday
+      run: echo "NOW=$(date +'%y%m%dT%H%M')" >> $GITHUB_ENV
+    - name: Print the date variable
+      run: |
+        echo $NOW # Gives "20241031T0304" USING NOW 
+        echo ${{ env.NOW }}  # Also Gives "20241031T0304" USING env.NOW 
+
+ #---------------------------------------------------------------------------------------   
     - name: Get default environments
       id: envs
       run: |
@@ -57,16 +67,7 @@ jobs:
           python-version: '3.9'
     - name: Install PlatformIO
       run: pip install -r requirements.txt
-#-----------------------------------------------------------------------------------------
-    - name: Set the date as variable
-      id: DateToday
-      run: echo "NOW=$(date +'%y%m%dT%H%M')" >> $GITHUB_ENV
-    - name: Print the date variable
-      run: |
-        echo $NOW # Gives "20241031T0304" USING NOW 
-        echo ${{ env.NOW }}  # Also Gives "20241031T0304" USING env.NOW 
 
- #---------------------------------------------------------------------------------------   
 
 
       
