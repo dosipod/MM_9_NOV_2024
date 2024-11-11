@@ -68,7 +68,16 @@ jobs:
     - name: Install PlatformIO
       run: pip install -r requirements.txt
 
+#-----------------------------------------------------------------------------------------
+    - name: Set the date as variable
+      id: DateToday
+      run: echo "NOW=$(date +'%y%m%dT%H%M')" >> $GITHUB_ENV
+    - name: Print the date variable
+      run: |
+        echo $NOW # Gives "20241031T0304" USING NOW 
+        echo ${{ env.NOW }}  # Also Gives "20241031T0304" USING env.NOW 
 
+ #---------------------------------------------------------------------------------------   
 
       
     - name: Build firmware
@@ -84,7 +93,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        name: firmware-release-${{ matrix.environment }}
+        name: firmware-releaseX-${{ matrix.environment }}
         path: build_output/release/*.bin
   release:
     name: Create Release
