@@ -85,7 +85,7 @@ jobs:
         WLED_RELEASE: True
       run: pio run -e ${{ matrix.environment }}
     - name: Rename Bin
-      run: mv -v .pio/build/${{ matrix.environment }}/firmware.bin firmware-${{ matrix.environment }}.bin
+      run: mv -v .pio/build/${{ matrix.environment }}/firmware.bin firmware${{ env.NOW }}-${{ matrix.environment }}.bin
     - uses: actions/upload-artifact@v4
       with:
         name: firmware${{ env.NOW }}-${{ matrix.environment }}
