@@ -60,7 +60,7 @@ jobs:
 #-----------------------------------------------------------------------------------------
     - name: Set the date as variable
       id: DateToday
-      run: echo "NOW=$(date +'%y%m%dT%H%M')" >> $GITHUB_OUTPUT
+      run: echo "NOW=$(date +'%y%m%dT%H%M')" >> $GITHUB_ENV
     - name: Print the date variable
       run: |
         echo $NOW # Gives "20241031T0304" USING NOW 
